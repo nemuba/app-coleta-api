@@ -28,7 +28,7 @@ module Api
           @profile = current_user.profile = Profile.new(profile_params)
 
           if @profile.save
-            json_response(@profile, :created, { location: api_v1_collect_profiles_path(@profile) })
+            json_response(@profile, :created, { location: api_v1_collect_profile_path(@profile) })
           else
             json_response_error(@profile.errors)
           end
