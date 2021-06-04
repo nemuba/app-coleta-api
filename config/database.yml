@@ -17,9 +17,8 @@ test:
 
 production:
   <<: *default
-  url: <%= ENV['CLEARDB_DATABASE_URL']%>
-  # database: collect_api_production
-  # username: <%= ENV['MYSQL_USER'] %>
-  # password: <%= ENV['MYSQL_PASS'] %>
-  # host: <%= ENV['MYSQL_HOST'] %>
-  # port: <%= ENV['MYSQL_PORT'] %>
+  database: collect_api_production
+  username: <%= ENV['MYSQL_USER'] %>
+  password: <%= ENV['MYSQL_PASS'] %>
+  host: <%= ENV['MYSQL_HOST'] %>
+  port: <%= ENV['MYSQL_PORT'] %>
