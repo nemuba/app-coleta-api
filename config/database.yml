@@ -16,8 +16,8 @@ test:
   database: <%= ENV['MYSQL_DB_TEST'] %>
 
 production:
+  <<: *default
   url: <%= ENV['CLEARDB_DATABASE_URL']%>
-  # <<: *default
   # database: collect_api_production
   # username: <%= ENV['MYSQL_USER'] %>
   # password: <%= ENV['MYSQL_PASS'] %>
