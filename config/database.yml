@@ -18,7 +18,7 @@ test:
 production:
   # url: <%= ENV['JAWSDB_URL'] %>
   <<: *default
-  database: collect_api_production
+  database: <%= ENV['MYSQL_DB']%>
   username: <%= ENV['MYSQL_USER'] %>
   password: <%= ENV['MYSQL_PASS'] %>
   host: <%= ENV['MYSQL_HOST'] %>
