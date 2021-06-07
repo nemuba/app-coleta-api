@@ -53,3 +53,16 @@
 // _destroy: 1 e id: 1,
 // id para referência e _destroy para informar a exclusão;
 ```
+
+* Cadastrar Produto
+
+```json
+// POST /api/v1/collect/products
+{
+  "product":{
+    "name": "Product #1",
+    "price": 250,
+    "point": 10
+  }
+}
+```
