@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
       namespace :collect do
         resources :profiles
+        resources :products
       end
     end
   end

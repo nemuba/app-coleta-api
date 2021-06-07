@@ -4,8 +4,9 @@ class User < ApplicationRecord
   has_secure_password
 
   has_one :profile, dependent: :destroy
-  has_many :system_module_users
+  has_many :system_module_users, dependent: :destroy
   has_many :user_modules, through: :system_module_users, source: :system_module
+  has_many :products, dependent: :destroy
 
   enum role: { admin: 0, customer: 1, business: 2, collector: 3 }
 
@@ -30,9 +31,9 @@ class User < ApplicationRecord
 
   after_create do
     if role == "customer"
-      customer = SystemModule.find_by(name: "customer")
+      collect = SystemModule.find_by(name: "collect")
 
-      system_module_users.create(system_module_id: customer.id)
+      system_module_users.create(system_module_id: collect.id)
     end
   end
 end
