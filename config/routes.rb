@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       namespace :collect do
         resources :profiles
         resources :products
+        resources :users, except: %w[create]
       end
     end
   end
