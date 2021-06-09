@@ -13,6 +13,7 @@ class Ability
     can :manage, Post, user_id: user.id
     can :manage, Profile, user_id: user.id
     can :manage, User, user_id: user.id
+    can :manage, Collect, user_id: user.id
     
     return unless user.admin?
 
