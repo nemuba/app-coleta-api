@@ -4,24 +4,19 @@ module Api
       class UsersController < ApplicationController
         before_action :authenticate_and_set_user
         before_action :set_profile, only: %i[show update destroy]
-        
+        load_and_authorize_resource
+
         def index
           @users = User.all
-
-          authorize! :read, @users
 
           json_response(@users)
         end
 
         def show
-          authorize! :read, @user
-
           json_response(@user)
         end
 
         def update
-          authorize! :update, @user
-          
           if @user.update(user_params)
             json_response(@user)
           else
@@ -30,8 +25,6 @@ module Api
         end
 
         def destroy
-          authorize! :destroy, @user
-
           @user.destroy
         end
 

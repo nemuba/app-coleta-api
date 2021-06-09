@@ -6,20 +6,17 @@ module Api
       class ProfilesController < ApplicationController
         before_action :authenticate_and_set_user
         before_action :set_profile, only: %i[show update destroy]
+        load_and_authorize_resource
 
         # GET /profiles
         def index
           @profiles = Profile.all
-
-          authorize! :read, @profiles
 
           json_response(@profiles)
         end
 
         # GET /profiles/1
         def show
-          authorize! :read, @profile
-
           json_response(@profile)
         end
 
@@ -36,8 +33,6 @@ module Api
 
         # PATCH/PUT /profiles/1
         def update
-          authorize! :update, @profile
-
           if @profile.update(profile_params)
             json_response(@profile)
           else
@@ -47,8 +42,6 @@ module Api
 
         # DELETE /profiles/1
         def destroy
-          authorize! :destroy, @profile
-
           @profile.destroy
         end
 
