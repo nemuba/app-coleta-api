@@ -10,6 +10,7 @@ Rails.application.routes.draw do
         authentication: "users/authentication"
       }
 
+      resources :api_docs, path: "apidocs", only: [:index]
       resources :system_modules, path: "systemmodules"
 
       namespace :collect do

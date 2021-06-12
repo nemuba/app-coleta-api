@@ -1,68 +1,18 @@
 # Collect API
 
-## Endpoints
+Api para gerenciamento de sistema de coleta
 
-* Criar conta
-  
-```json
-// POST api/v1/users/sign_up
-{
-  "email": "email@eamial.com",
-  "password": "123456789",
-  "password_confirmation": "123456789",
-  "role": 0
-}
-// retorna token jwt no header: headers['access-token']
-// enum role: {admin: 0, customer: 1, business: 2, collector: 3}
-```
+## Ferramentas utlizadas
 
-* Fazer Login
+* ruby: 3.0
+* rails: 6.1.2
+* mysql: 8.0
+* swagger-blocks
+* api_guard
+* cancancan
 
-```json
-// POST api/v1/users/sign_in
-{
-  "email": "email@eamial.com",
-  "password": "123456789",
-}
-// retorna token jwt no header: headers['access-token']
-```
+# Documentação Swagger
 
-* Cadastrar Profile
-  
-```json
-{
-  "profile": {
-    "name": "admin",
-    "phone": "12997245805",
-    "email": "admin@contact.com",
-    "document": "43595959599",
-    "address_attributes":{
-      "id": 1,
-      "street": "Rua tal",
-      "number": "45",
-      "neighborhood": "Bairro",
-      "city": "Cidade",
-      "country": "Pais",
-      "zip_code": "Código Postal",
-      "latitude": "12.2245",
-      "longitude": "-9.52585",
-      "_destroy": 1
-    }
-  }
-}
-// _destroy: 1 e id: 1,
-// id para referência e _destroy para informar a exclusão;
-```
+Copie o conteúdo arquivo abaixo e utilize  o site [editor.swagger.io](https://editor.swagger.io) para utilizar a documentação do swagger.
 
-* Cadastrar Produto
-
-```json
-// POST /api/v1/collect/products
-{
-  "product":{
-    "name": "Product #1",
-    "price": 250,
-    "point": 10
-  }
-}
-```
+Link: [Clique Aqui para copiar o conteúdo](./swagger/swagger.json)
