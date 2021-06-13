@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CollectSerializer < ActiveModel::Serializer
   attributes :id, :note
   has_one :user

@@ -1,16 +1,28 @@
 # frozen_string_literal: true
 
 module Swagger
-  class CollectStatus
+  class Product
     include ::Swagger::Blocks
 
-    swagger_schema :CollectStatusDTO do
+    swagger_schema :ProductDTO do
       property :id do
+        key :type, :integer
+      end
+
+      property :user_id do
         key :type, :integer
       end
 
       property :name do
         key :type, :string
+      end
+
+      property :price do
+        key :type, :number
+      end
+
+      property :point do
+        key :type, :number
       end
 
       property :created_at do
@@ -24,8 +36,12 @@ module Swagger
       end
     end
 
-    swagger_schema :CollectStatusInput do
+    swagger_schema :ProductInput do
       property :id do
+        key :type, :integer
+      end
+
+      property :user_id do
         key :type, :integer
       end
 
@@ -33,8 +49,12 @@ module Swagger
         key :type, :string
       end
 
-      property :_destroy do
-        key :type, :string
+      property :price do
+        key :type, :number
+      end
+
+      property :point do
+        key :type, :number
       end
     end
   end

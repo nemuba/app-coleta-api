@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Api
   module V1
     module Collect
@@ -29,14 +31,13 @@ module Api
         end
 
         private
-        
-        def user_params
-          params.require(:user).permit(:email, :password, :password_confirmation, :role)
-        end
+          def user_params
+            params.require(:user).permit(:email, :password, :password_confirmation, :role)
+          end
 
-        def set_user
-          @user = User.find(params[:id])
-        end
+          def set_user
+            @user = User.find(params[:id])
+          end
       end
     end
   end

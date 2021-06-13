@@ -9,12 +9,12 @@ class Ability
     @module_permitted ||= user.user_modules.pluck(:name).include?(system_module)
 
     return unless module_permitted
-    
+
     can :manage, Post, user_id: user.id
     can :manage, Profile, user_id: user.id
     can :manage, User, user_id: user.id
     can :manage, Collect, user_id: user.id
-    
+
     return unless user.admin?
 
     can :manage, :all

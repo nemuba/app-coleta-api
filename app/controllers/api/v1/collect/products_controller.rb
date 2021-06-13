@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Api
   module V1
     module Collect
@@ -44,15 +46,15 @@ module Api
         end
 
         private
-        # Use callbacks to share common setup or constraints between actions.
-        def set_product
-          @product = Product.find(params[:id])
-        end
+          # Use callbacks to share common setup or constraints between actions.
+          def set_product
+            @product = Product.find(params[:id])
+          end
 
-        # Only allow a list of trusted parameters through.
-        def product_params
-          params.require(:product).permit(:name, :price, :point)
-        end
+          # Only allow a list of trusted parameters through.
+          def product_params
+            params.require(:product).permit(:name, :price, :point)
+          end
       end
     end
   end

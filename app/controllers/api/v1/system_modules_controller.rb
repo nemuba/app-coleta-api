@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Api
   module V1
     class SystemModulesController < ApplicationController
@@ -14,17 +16,17 @@ module Api
       def show
         json_response(@system_module)
       end
-      
+
       def create
         system_module = SystemModule.new(system_module_params.to_h.merge(user_id: current_user.id))
-        
+
         if system_module.save
           json_response(system_module)
         else
           json_response_error(system_module.errors)
         end
       end
-      
+
       def update
         if @system_module.update(system_module_params)
           json_response(@system_module)

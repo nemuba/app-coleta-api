@@ -1,21 +1,20 @@
 # frozen_string_literal: true
 
 module Swagger
-  class Collect
+  class SystemModule
     include ::Swagger::Blocks
 
-    swagger_schema :CollectDTO do
+    swagger_schema :SystemModuleDTO do
       property :id do
         key :type, :integer
-        key :format, :int64
       end
 
-      property :note do
+      property :user_id do
+        key :type, :integer
+      end
+
+      property :name do
         key :type, :string
-      end
-
-      property :collect_status do
-        key :'$ref', :CollectStatusDTO
       end
 
       property :created_at do
@@ -29,13 +28,17 @@ module Swagger
       end
     end
 
-    swagger_schema :CollectInput do
-      property :note do
+    swagger_schema :SystemModuleInput do
+      property :id do
+        key :type, :integer
+      end
+
+      property :name do
         key :type, :string
       end
 
-      property :collect_status_attributes do
-        key :'$ref', :CollectStatusInput
+      property :user_id do
+        key :type, :integer
       end
     end
   end

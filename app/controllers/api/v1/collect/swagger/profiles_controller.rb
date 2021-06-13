@@ -4,29 +4,29 @@ module Api
   module V1
     module Collect
       module Swagger
-        class CollectsController
+        class ProfilesController
           include ::Swagger::Blocks
 
-          swagger_path "/collects/{id}" do
+          swagger_path "/profiles/{id}" do
             operation :get do
-              key :summary, "Busca Coleta por ID"
-              key :description, "Retorna um coleta se o usuário tiver permissão de acesso"
-              key :operationId, "findCollectById"
+              key :summary, "Busca Perfil por ID"
+              key :description, "Retorna um perfil se o usuário tiver permissão de acesso"
+              key :operationId, "findProfileById"
               key :tags, [
-                "Collect"
+                "Profile"
               ]
               parameter do
                 key :name, :id
                 key :in, :path
-                key :description, "ID da coleta"
+                key :description, "ID do perfil"
                 key :required, true
                 key :type, :integer
                 key :format, :int64
               end
               response 200 do
-                key :description, "Coleta"
+                key :description, "Perfil"
                 schema do
-                  key :'$ref', :CollectDTO
+                  key :'$ref', :ProfileDTO
                 end
               end
               response :default do
@@ -38,25 +38,25 @@ module Api
             end
           end
 
-          swagger_path "/collects" do
+          swagger_path "/profiles" do
             operation :get do
-              key :summary, "Retorna todas as coletas cadastradas no sistema"
-              key :description, "Retorna todas as coletas se o usuário tiver permissão de acesso"
-              key :operationId, "FindCollects"
+              key :summary, "Retorna todas os perfis cadastrados no sistema"
+              key :description, "Retorna todas os perfis se o usuário tiver permissão de acesso"
+              key :operationId, "FindProfiles"
               key :produces, [
                 "application/json",
                 "text/html",
               ]
               key :tags, [
-                "Collect"
+                "Profile"
               ]
 
               response 200 do
-                key :description, "Coleta"
+                key :description, "Perfil"
                 schema do
                   key :type, :array
                   items do
-                    key :'$ref', :CollectDTO
+                    key :'$ref', :ProfileDTO
                   end
                 end
               end
@@ -70,32 +70,32 @@ module Api
             end
           end
 
-          swagger_path "/collects" do
+          swagger_path "/profiles" do
             operation :post do
-              key :summary, "Cadastra coleta no sistema"
-              key :description, "Retorna a coleta cadastrada"
-              key :operationId, "AddCollect"
+              key :summary, "Cadastra perfil no sistema"
+              key :description, "Retorna o perfil cadastrado"
+              key :operationId, "AddProfile"
               key :produces, [
                 "application/json",
                 "text/html",
               ]
               key :tags, [
-                "Collect"
+                "Profile"
               ]
               parameter do
-                key :name, :collect
+                key :name, :profile
                 key :in, :body
-                key :description, "Dados de Coleta"
+                key :description, "Dados do Perfil"
                 key :required, true
                 schema do
-                  key :'$ref', :CollectInput
+                  key :'$ref', :ProfileInput
                 end
               end
 
               response 200 do
-                key :description, "Coleta"
+                key :description, "Perfil"
                 schema do
-                  key :'$ref', :CollectDTO
+                  key :'$ref', :ProfileDTO
                 end
               end
               response :default do
@@ -107,41 +107,41 @@ module Api
             end
           end
 
-          swagger_path "/collects/{id}" do
+          swagger_path "/profiles/{id}" do
             operation :put do
-              key :summary, "Edita coleta no sistema"
-              key :description, "Retorna a coleta atualizada"
-              key :operationId, "UpdateCollect"
+              key :summary, "Edita perfil no sistema"
+              key :description, "Retorna o perfil atualizado"
+              key :operationId, "UpdateProfile"
               key :produces, [
                 "application/json",
                 "text/html",
               ]
               key :tags, [
-                "Collect"
+                "Profile"
               ]
 
               parameter do
                 key :name, :id
                 key :type, :integer
                 key :in, :path
-                key :description, "ID da coleta"
+                key :description, "ID do perfil"
                 key :required, true
               end
 
               parameter do
-                key :name, :collect
+                key :name, :profile
                 key :in, :body
-                key :description, "Dados de Coleta"
+                key :description, "Dados do perfil"
                 key :required, true
                 schema do
-                  key :'$ref', :CollectInput
+                  key :'$ref', :ProfileInput
                 end
               end
 
               response 200 do
-                key :description, "Coleta"
+                key :description, "Perfil"
                 schema do
-                  key :'$ref', :CollectDTO
+                  key :'$ref', :ProfileDTO
                 end
               end
               response :default do
@@ -153,24 +153,24 @@ module Api
             end
           end
 
-          swagger_path "/collects/{id}" do
+          swagger_path "/profiles/{id}" do
             operation :delete do
-              key :summary, "Exclui coleta no sistema"
-              key :description, "Exclui a coleta atualizada"
-              key :operationId, "DestroyCollect"
+              key :summary, "Exclui perfil no sistema"
+              key :description, "Exclui o perfil"
+              key :operationId, "DestroyProfile"
               key :produces, [
                 "application/json",
                 "text/html",
               ]
               key :tags, [
-                "Collect"
+                "Profile"
               ]
 
               parameter do
                 key :name, :id
                 key :type, :integer
                 key :in, :path
-                key :description, "ID da coleta"
+                key :description, "ID do perfil"
                 key :required, true
               end
 

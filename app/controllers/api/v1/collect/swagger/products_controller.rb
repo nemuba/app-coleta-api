@@ -4,29 +4,29 @@ module Api
   module V1
     module Collect
       module Swagger
-        class CollectsController
+        class ProductsController
           include ::Swagger::Blocks
 
-          swagger_path "/collects/{id}" do
+          swagger_path "/products/{id}" do
             operation :get do
-              key :summary, "Busca Coleta por ID"
-              key :description, "Retorna um coleta se o usuário tiver permissão de acesso"
-              key :operationId, "findCollectById"
+              key :summary, "Busca Produto por ID"
+              key :description, "Retorna um produto se o usuário tiver permissão de acesso"
+              key :operationId, "findProductById"
               key :tags, [
-                "Collect"
+                "Product"
               ]
               parameter do
                 key :name, :id
                 key :in, :path
-                key :description, "ID da coleta"
+                key :description, "ID do produto"
                 key :required, true
                 key :type, :integer
                 key :format, :int64
               end
               response 200 do
-                key :description, "Coleta"
+                key :description, "Produto"
                 schema do
-                  key :'$ref', :CollectDTO
+                  key :'$ref', :ProductDTO
                 end
               end
               response :default do
@@ -38,25 +38,25 @@ module Api
             end
           end
 
-          swagger_path "/collects" do
+          swagger_path "/products" do
             operation :get do
-              key :summary, "Retorna todas as coletas cadastradas no sistema"
-              key :description, "Retorna todas as coletas se o usuário tiver permissão de acesso"
-              key :operationId, "FindCollects"
+              key :summary, "Retorna todas os produtos cadastrados no sistema"
+              key :description, "Retorna todas os produtos se o usuário tiver permissão de acesso"
+              key :operationId, "FindProducts"
               key :produces, [
                 "application/json",
                 "text/html",
               ]
               key :tags, [
-                "Collect"
+                "Product"
               ]
 
               response 200 do
-                key :description, "Coleta"
+                key :description, "Produto"
                 schema do
                   key :type, :array
                   items do
-                    key :'$ref', :CollectDTO
+                    key :'$ref', :ProductDTO
                   end
                 end
               end
@@ -70,32 +70,32 @@ module Api
             end
           end
 
-          swagger_path "/collects" do
+          swagger_path "/products" do
             operation :post do
-              key :summary, "Cadastra coleta no sistema"
-              key :description, "Retorna a coleta cadastrada"
-              key :operationId, "AddCollect"
+              key :summary, "Cadastra produto no sistema"
+              key :description, "Retorna o produto cadastrado"
+              key :operationId, "AddProduct"
               key :produces, [
                 "application/json",
                 "text/html",
               ]
               key :tags, [
-                "Collect"
+                "Product"
               ]
               parameter do
-                key :name, :collect
+                key :name, :product
                 key :in, :body
-                key :description, "Dados de Coleta"
+                key :description, "Dados do Produto"
                 key :required, true
                 schema do
-                  key :'$ref', :CollectInput
+                  key :'$ref', :ProductInput
                 end
               end
 
               response 200 do
-                key :description, "Coleta"
+                key :description, "Produto"
                 schema do
-                  key :'$ref', :CollectDTO
+                  key :'$ref', :ProductDTO
                 end
               end
               response :default do
@@ -107,41 +107,41 @@ module Api
             end
           end
 
-          swagger_path "/collects/{id}" do
+          swagger_path "/products/{id}" do
             operation :put do
-              key :summary, "Edita coleta no sistema"
-              key :description, "Retorna a coleta atualizada"
-              key :operationId, "UpdateCollect"
+              key :summary, "Edita produto no sistema"
+              key :description, "Retorna o produto atualizado"
+              key :operationId, "UpdateProduct"
               key :produces, [
                 "application/json",
                 "text/html",
               ]
               key :tags, [
-                "Collect"
+                "Product"
               ]
 
               parameter do
                 key :name, :id
                 key :type, :integer
                 key :in, :path
-                key :description, "ID da coleta"
+                key :description, "ID do produto"
                 key :required, true
               end
 
               parameter do
-                key :name, :collect
+                key :name, :product
                 key :in, :body
-                key :description, "Dados de Coleta"
+                key :description, "Dados do produto"
                 key :required, true
                 schema do
-                  key :'$ref', :CollectInput
+                  key :'$ref', :ProductInput
                 end
               end
 
               response 200 do
-                key :description, "Coleta"
+                key :description, "Produto"
                 schema do
-                  key :'$ref', :CollectDTO
+                  key :'$ref', :ProductDTO
                 end
               end
               response :default do
@@ -153,24 +153,24 @@ module Api
             end
           end
 
-          swagger_path "/collects/{id}" do
+          swagger_path "/products/{id}" do
             operation :delete do
-              key :summary, "Exclui coleta no sistema"
-              key :description, "Exclui a coleta atualizada"
-              key :operationId, "DestroyCollect"
+              key :summary, "Exclui produto no sistema"
+              key :description, "Exclui o produto"
+              key :operationId, "DestroyProduct"
               key :produces, [
                 "application/json",
                 "text/html",
               ]
               key :tags, [
-                "Collect"
+                "Product"
               ]
 
               parameter do
                 key :name, :id
                 key :type, :integer
                 key :in, :path
-                key :description, "ID da coleta"
+                key :description, "ID do produto"
                 key :required, true
               end
 

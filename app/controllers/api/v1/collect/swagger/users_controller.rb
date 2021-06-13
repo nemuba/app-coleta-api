@@ -4,29 +4,29 @@ module Api
   module V1
     module Collect
       module Swagger
-        class CollectsController
+        class UsersController
           include ::Swagger::Blocks
 
-          swagger_path "/collects/{id}" do
+          swagger_path "/users/{id}" do
             operation :get do
-              key :summary, "Busca Coleta por ID"
-              key :description, "Retorna um coleta se o usuário tiver permissão de acesso"
-              key :operationId, "findCollectById"
+              key :summary, "Busca Usuário por ID"
+              key :description, "Retorna um usuário se o usuário tiver permissão de acesso"
+              key :operationId, "findUserById"
               key :tags, [
-                "Collect"
+                "User"
               ]
               parameter do
                 key :name, :id
                 key :in, :path
-                key :description, "ID da coleta"
+                key :description, "ID do usuário"
                 key :required, true
                 key :type, :integer
                 key :format, :int64
               end
               response 200 do
-                key :description, "Coleta"
+                key :description, "Usuário"
                 schema do
-                  key :'$ref', :CollectDTO
+                  key :'$ref', :UserDTO
                 end
               end
               response :default do
@@ -38,25 +38,25 @@ module Api
             end
           end
 
-          swagger_path "/collects" do
+          swagger_path "/users" do
             operation :get do
-              key :summary, "Retorna todas as coletas cadastradas no sistema"
-              key :description, "Retorna todas as coletas se o usuário tiver permissão de acesso"
-              key :operationId, "FindCollects"
+              key :summary, "Retorna todas os usuários cadastrados no sistema"
+              key :description, "Retorna todas os usuários se o usuário tiver permissão de acesso"
+              key :operationId, "FindUsers"
               key :produces, [
                 "application/json",
                 "text/html",
               ]
               key :tags, [
-                "Collect"
+                "User"
               ]
 
               response 200 do
-                key :description, "Coleta"
+                key :description, "Usuário"
                 schema do
                   key :type, :array
                   items do
-                    key :'$ref', :CollectDTO
+                    key :'$ref', :UserDTO
                   end
                 end
               end
@@ -70,32 +70,32 @@ module Api
             end
           end
 
-          swagger_path "/collects" do
+          swagger_path "/users" do
             operation :post do
-              key :summary, "Cadastra coleta no sistema"
-              key :description, "Retorna a coleta cadastrada"
-              key :operationId, "AddCollect"
+              key :summary, "Cadastra usuário no sistema"
+              key :description, "Retorna o usuário cadastrado"
+              key :operationId, "AddUser"
               key :produces, [
                 "application/json",
                 "text/html",
               ]
               key :tags, [
-                "Collect"
+                "User"
               ]
               parameter do
-                key :name, :collect
+                key :name, :user
                 key :in, :body
-                key :description, "Dados de Coleta"
+                key :description, "Dados do Usuário"
                 key :required, true
                 schema do
-                  key :'$ref', :CollectInput
+                  key :'$ref', :UserInput
                 end
               end
 
               response 200 do
-                key :description, "Coleta"
+                key :description, "Usuário"
                 schema do
-                  key :'$ref', :CollectDTO
+                  key :'$ref', :UserDTO
                 end
               end
               response :default do
@@ -107,41 +107,41 @@ module Api
             end
           end
 
-          swagger_path "/collects/{id}" do
+          swagger_path "/users/{id}" do
             operation :put do
-              key :summary, "Edita coleta no sistema"
-              key :description, "Retorna a coleta atualizada"
-              key :operationId, "UpdateCollect"
+              key :summary, "Edita usuário no sistema"
+              key :description, "Retorna o usuário atualizado"
+              key :operationId, "UpdateUser"
               key :produces, [
                 "application/json",
                 "text/html",
               ]
               key :tags, [
-                "Collect"
+                "User"
               ]
 
               parameter do
                 key :name, :id
                 key :type, :integer
                 key :in, :path
-                key :description, "ID da coleta"
+                key :description, "ID do usuário"
                 key :required, true
               end
 
               parameter do
-                key :name, :collect
+                key :name, :user
                 key :in, :body
-                key :description, "Dados de Coleta"
+                key :description, "Dados do usuário"
                 key :required, true
                 schema do
-                  key :'$ref', :CollectInput
+                  key :'$ref', :UserInput
                 end
               end
 
               response 200 do
-                key :description, "Coleta"
+                key :description, "Usuário"
                 schema do
-                  key :'$ref', :CollectDTO
+                  key :'$ref', :UserDTO
                 end
               end
               response :default do
@@ -153,24 +153,24 @@ module Api
             end
           end
 
-          swagger_path "/collects/{id}" do
+          swagger_path "/users/{id}" do
             operation :delete do
-              key :summary, "Exclui coleta no sistema"
-              key :description, "Exclui a coleta atualizada"
-              key :operationId, "DestroyCollect"
+              key :summary, "Exclui usuário no sistema"
+              key :description, "Exclui o usuário"
+              key :operationId, "DestroyUser"
               key :produces, [
                 "application/json",
                 "text/html",
               ]
               key :tags, [
-                "Collect"
+                "User"
               ]
 
               parameter do
                 key :name, :id
                 key :type, :integer
                 key :in, :path
-                key :description, "ID da coleta"
+                key :description, "ID do usuário"
                 key :required, true
               end
 

@@ -1,21 +1,24 @@
 # frozen_string_literal: true
 
 module Swagger
-  class Collect
+  class User
     include ::Swagger::Blocks
 
-    swagger_schema :CollectDTO do
+    swagger_schema :UserDTO do
       property :id do
         key :type, :integer
-        key :format, :int64
       end
 
-      property :note do
+      property :email do
+        key :type, :integer
+      end
+
+      property :role do
         key :type, :string
       end
 
-      property :collect_status do
-        key :'$ref', :CollectStatusDTO
+      property :profile do
+        key :'$ref', :ProfileDTO
       end
 
       property :created_at do
@@ -29,13 +32,17 @@ module Swagger
       end
     end
 
-    swagger_schema :CollectInput do
-      property :note do
-        key :type, :string
+    swagger_schema :UserInput do
+      property :id do
+        key :type, :integer
       end
 
-      property :collect_status_attributes do
-        key :'$ref', :CollectStatusInput
+      property :email do
+        key :type, :integer
+      end
+
+      property :role do
+        key :type, :string
       end
     end
   end
