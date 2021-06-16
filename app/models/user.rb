@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :user_modules, through: :system_module_users, source: :system_module
   has_many :products, dependent: :destroy
   has_many :collects, dependent: :destroy
+  has_many :routes, dependent: :destroy
 
   enum role: { admin: 0, customer: 1, business: 2, collector: 3 }
 
