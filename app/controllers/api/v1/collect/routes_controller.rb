@@ -53,7 +53,7 @@ module Api
 
           # Only allow a list of trusted parameters through.
           def route_params
-            params.require(:route).permit(:date_collect, :date_start, :date_finish)
+            params.require(:route).permit(:user_id, :date_collect, :date_start, :date_finish)
           end
       end
     end
