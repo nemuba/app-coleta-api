@@ -17,6 +17,7 @@ Rails.application.routes.draw do
         resources :profiles
         resources :products
         resources :collects
+        resources :routes
         resources :users, except: %w[create]
       end
     end

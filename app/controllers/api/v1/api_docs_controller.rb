@@ -55,6 +55,8 @@ module Api
         ::Api::V1::Swagger::SystemModulesController,
         ::Swagger::SystemModule,
         ::Swagger::Address,
+        ::Api::V1::Collect::Swagger::RoutesController,
+        ::Swagger::Route,
         self,
       ].freeze
 
