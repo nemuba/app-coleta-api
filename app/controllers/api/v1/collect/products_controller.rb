@@ -53,9 +53,10 @@ module Api
 
           # Only allow a list of trusted parameters through.
           def product_params
-            params.require(:product).permit(:name, :price, :point)
+            params.require(:product).permit(:name, :price, :point, :user_id)
           end
       end
     end
   end
 end
+

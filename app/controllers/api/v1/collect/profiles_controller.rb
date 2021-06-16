@@ -54,6 +54,7 @@ module Api
           # Only allow a trusted parameter "white list" through.
           def profile_params
             params.require(:profile).permit(
+              :user_id,
               :name,
               :phone,
               :email,

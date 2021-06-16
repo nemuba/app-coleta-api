@@ -53,7 +53,11 @@ module Api
 
           # Only allow a list of trusted parameters through.
           def collect_params
-            params.require(:collect).permit(:note, collect_status_attributes: [:id, :name, :_destroy])
+            params.require(:collect).permit(
+              :user_id,
+              :note,
+              collect_status_attributes: [:id, :name, :_destroy]
+            )
           end
       end
     end
