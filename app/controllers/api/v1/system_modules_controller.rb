@@ -18,7 +18,7 @@ module Api
       end
 
       def create
-        system_module = SystemModule.new(system_module_params.to_h.merge(user_id: current_user.id))
+        system_module = SystemModule.new(system_module_params)
 
         if system_module.save
           json_response(system_module)
@@ -49,7 +49,7 @@ module Api
         end
 
         def system_module_params
-          params.require(:system_module).permit(:name)
+          params.require(:system_module).permit(:name, :user_id)
         end
     end
   end

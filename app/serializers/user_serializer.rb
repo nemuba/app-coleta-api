@@ -7,4 +7,5 @@ class UserSerializer < ActiveModel::Serializer
   has_many :routes
   has_many :products
   has_many :collects
+  has_many :user_modules
 end
