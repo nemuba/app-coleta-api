@@ -1,24 +1,20 @@
 # frozen_string_literal: true
 
 module Swagger
-  class User
+  class UserPoint
     include ::Swagger::Blocks
 
-    swagger_schema :UserDTO do
+    swagger_schema :UserPointDTO do
       property :id do
         key :type, :integer
       end
 
-      property :email do
+      property :user_id do
         key :type, :integer
       end
 
-      property :role do
-        key :type, :string
-      end
-
-      property :profile do
-        key :'$ref', :ProfileDTO
+      property :value do
+        key :type, :integer
       end
 
       property :created_at do
@@ -32,29 +28,17 @@ module Swagger
       end
     end
 
-    swagger_schema :UserInput do
+    swagger_schema :UserPointInput do
       property :id do
         key :type, :integer
       end
 
-      property :email do
+      property :value do
         key :type, :integer
       end
 
-      property :password do
-        key :type, :integer
-      end
-
-      property :password_confirmation do
-        key :type, :integer
-      end
-
-      property :role do
+      property :_destroy do
         key :type, :string
-      end
-
-      property :user_point_attributes do
-        key :'$ref', :UserPointInput
       end
     end
   end

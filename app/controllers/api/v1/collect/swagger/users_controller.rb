@@ -70,43 +70,6 @@ module Api
             end
           end
 
-          swagger_path "/users" do
-            operation :post do
-              key :summary, "Cadastra usuário no sistema"
-              key :description, "Retorna o usuário cadastrado"
-              key :operationId, "AddUser"
-              key :produces, [
-                "application/json",
-                "text/html",
-              ]
-              key :tags, [
-                "User"
-              ]
-              parameter do
-                key :name, :user
-                key :in, :body
-                key :description, "Dados do Usuário"
-                key :required, true
-                schema do
-                  key :'$ref', :UserInput
-                end
-              end
-
-              response 200 do
-                key :description, "Usuário"
-                schema do
-                  key :'$ref', :UserDTO
-                end
-              end
-              response :default do
-                key :description, "Error"
-                schema do
-                  key :'$ref', :ErrorModel
-                end
-              end
-            end
-          end
-
           swagger_path "/users/{id}" do
             operation :put do
               key :summary, "Edita usuário no sistema"

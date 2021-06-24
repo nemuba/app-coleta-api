@@ -59,6 +59,7 @@ module Api
         ::Swagger::Route,
         ::Api::V1::Swagger::SystemModuleUserController,
         ::Swagger::SystemModuleUser,
+        ::Swagger::UserPoint,
         self,
       ].freeze
 

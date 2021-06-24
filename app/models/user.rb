@@ -9,6 +9,9 @@ class User < ApplicationRecord
   has_many :products, dependent: :destroy
   has_many :collects, dependent: :destroy
   has_many :routes, dependent: :destroy
+  has_one :user_point, dependent: :destroy
+
+  accepts_nested_attributes_for :user_point, allow_destroy: true
 
   enum role: { admin: 0, customer: 1, business: 2, collector: 3 }
 
