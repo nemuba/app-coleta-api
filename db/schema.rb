@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_24_181235) do
+ActiveRecord::Schema.define(version: 2021_06_24_190301) do
 
   create_table "addresses", charset: "utf8mb4", force: :cascade do |t|
     t.string "street"
@@ -64,6 +64,16 @@ ActiveRecord::Schema.define(version: 2021_06_24_181235) do
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
+  create_table "route_collects", charset: "utf8mb4", force: :cascade do |t|
+    t.bigint "route_id", null: false
+    t.bigint "collect_id", null: false
+    t.integer "order"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["collect_id"], name: "index_route_collects_on_collect_id"
+    t.index ["route_id"], name: "index_route_collects_on_route_id"
+  end
+
   create_table "routes", charset: "utf8mb4", force: :cascade do |t|
     t.date "date_collect"
     t.datetime "date_start"
@@ -113,6 +123,8 @@ ActiveRecord::Schema.define(version: 2021_06_24_181235) do
   add_foreign_key "collects", "users"
   add_foreign_key "products", "users"
   add_foreign_key "profiles", "users"
+  add_foreign_key "route_collects", "collects"
+  add_foreign_key "route_collects", "routes"
   add_foreign_key "routes", "users"
   add_foreign_key "system_module_users", "system_modules"
   add_foreign_key "system_module_users", "users"
