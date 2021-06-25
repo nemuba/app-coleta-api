@@ -61,6 +61,8 @@ module Api
         ::Api::V1::Swagger::SystemModuleUserController,
         ::Swagger::SystemModuleUser,
         ::Swagger::UserPoint,
+        ::Api::V1::Swagger::ItemTypesController,
+        ::Swagger::ItemType,
         self,
       ].freeze
 
