@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       resources :api_docs, path: "apidocs", only: [:index]
       resources :system_modules, path: "systemmodules"
       resources :system_module_user, path: "systemmoduleuser"
+      resources :item_types, path: "itemtypes"
 
       namespace :collect do
         resources :profiles
