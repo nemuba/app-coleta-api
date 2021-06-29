@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_29_200613) do
+ActiveRecord::Schema.define(version: 2021_06_29_204128) do
 
   create_table "addresses", charset: "utf8mb4", force: :cascade do |t|
     t.string "street"
@@ -41,6 +41,16 @@ ActiveRecord::Schema.define(version: 2021_06_29_200613) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_collects_on_user_id"
+  end
+
+  create_table "item_collects", charset: "utf8mb4", force: :cascade do |t|
+    t.bigint "item_id", null: false
+    t.bigint "collect_id", null: false
+    t.float "weight"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["collect_id"], name: "index_item_collects_on_collect_id"
+    t.index ["item_id"], name: "index_item_collects_on_item_id"
   end
 
   create_table "item_types", charset: "utf8mb4", force: :cascade do |t|
@@ -137,6 +147,8 @@ ActiveRecord::Schema.define(version: 2021_06_29_200613) do
   add_foreign_key "addresses", "profiles"
   add_foreign_key "collect_statuses", "collects"
   add_foreign_key "collects", "users"
+  add_foreign_key "item_collects", "collects"
+  add_foreign_key "item_collects", "items"
   add_foreign_key "items", "item_types"
   add_foreign_key "products", "users"
   add_foreign_key "profiles", "users"

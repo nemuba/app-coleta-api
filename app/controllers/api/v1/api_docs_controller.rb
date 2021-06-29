@@ -65,6 +65,7 @@ module Api
         ::Swagger::ItemType,
         ::Api::V1::Collect::Swagger::ItemsController,
         ::Swagger::Item,
+        ::Swagger::ItemCollect,
         self,
       ].freeze
 

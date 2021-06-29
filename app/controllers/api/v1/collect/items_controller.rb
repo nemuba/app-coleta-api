@@ -53,7 +53,13 @@ module Api
 
           # Only allow a list of trusted parameters through.
           def item_params
-            params.require(:item).permit(:point, :point_weight, :name, :item_type_id)
+            params.require(:item).permit(
+              :point,
+              :point_weight,
+              :name,
+              :item_type_id,
+              item_collects_attributes: [:id, :collect_id, :weight, :_destroy]
+            )
           end
       end
     end
