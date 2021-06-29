@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_25_182003) do
+ActiveRecord::Schema.define(version: 2021_06_29_200613) do
 
   create_table "addresses", charset: "utf8mb4", force: :cascade do |t|
     t.string "street"
@@ -47,6 +47,16 @@ ActiveRecord::Schema.define(version: 2021_06_25_182003) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "items", charset: "utf8mb4", force: :cascade do |t|
+    t.integer "point"
+    t.float "point_weight"
+    t.string "name"
+    t.bigint "item_type_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["item_type_id"], name: "index_items_on_item_type_id"
   end
 
   create_table "products", charset: "utf8mb4", force: :cascade do |t|
@@ -127,6 +137,7 @@ ActiveRecord::Schema.define(version: 2021_06_25_182003) do
   add_foreign_key "addresses", "profiles"
   add_foreign_key "collect_statuses", "collects"
   add_foreign_key "collects", "users"
+  add_foreign_key "items", "item_types"
   add_foreign_key "products", "users"
   add_foreign_key "profiles", "users"
   add_foreign_key "route_collects", "collects"

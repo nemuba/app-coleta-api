@@ -21,6 +21,7 @@ Rails.application.routes.draw do
         resources :collects
         resources :routes
         resources :users, except: %w[create]
+        resources :items
       end
     end
   end
