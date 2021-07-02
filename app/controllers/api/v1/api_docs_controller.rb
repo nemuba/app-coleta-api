@@ -66,6 +66,8 @@ module Api
         ::Api::V1::Collect::Swagger::ItemsController,
         ::Swagger::Item,
         ::Swagger::ItemCollect,
+        ::Api::V1::Users::Swagger::AuthenticationController,
+        ::Api::V1::Users::Swagger::RegistrationController,
         self,
       ].freeze
 
