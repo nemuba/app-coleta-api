@@ -21,22 +21,11 @@ module Api
               ]
 
               parameter do
-                key :name, :email
+                key :name, :auth
                 key :in, :body
-                key :description, "Email"
                 key :required, true
                 schema do
-                  key :type, :string
-                end
-              end
-
-              parameter do
-                key :name, :password
-                key :in, :body
-                key :description, "Password"
-                key :required, true
-                schema do
-                  key :type, :string
+                  key :'$ref', :AuthenticationDTO
                 end
               end
 

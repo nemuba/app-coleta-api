@@ -21,43 +21,11 @@ module Api
               ]
 
               parameter do
-                key :name, :email
+                key :name, :auth
                 key :in, :body
-                key :description, "Email"
                 key :required, true
                 schema do
-                  key :type, :string
-                end
-              end
-
-              parameter do
-                key :name, :password
-                key :in, :body
-                key :description, "Password"
-                key :required, true
-                schema do
-                  key :type, :string
-                end
-              end
-
-              parameter do
-                key :name, :password_confirmation
-                key :in, :body
-                key :description, "Password Confirmation"
-                key :required, true
-                schema do
-                  key :type, :string
-                end
-              end
-
-              parameter do
-                key :name, :role
-                key :in, :body
-                key :description, "Role"
-                key :required, false
-                schema do
-                  key :type, :string
-                  key :format, "admin, collector, customer, business"
+                  key :'$ref', :RegistrationDTO
                 end
               end
 

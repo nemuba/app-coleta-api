@@ -39,6 +39,13 @@ module Swagger
         end
       end
 
+      property :point_histories do
+        key :type, :array
+        items do
+          key :'$ref', :PointHistoryDTO
+        end
+      end
+
       property :user_modules do
         key :type, :array
         items do

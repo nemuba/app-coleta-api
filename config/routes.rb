@@ -22,6 +22,7 @@ Rails.application.routes.draw do
         resources :routes
         resources :users, except: %w[create]
         resources :items
+        resources :point_histories
       end
     end
   end

@@ -68,6 +68,10 @@ module Api
         ::Swagger::ItemCollect,
         ::Api::V1::Users::Swagger::AuthenticationController,
         ::Api::V1::Users::Swagger::RegistrationController,
+        ::Api::V1::Collect::Swagger::PointHistoriesController,
+        ::Swagger::PointHistory,
+        ::Swagger::Authentication,
+        ::Swagger::Registration,
         self,
       ].freeze
 
