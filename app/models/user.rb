@@ -35,8 +35,8 @@ class User < ApplicationRecord
   end
 
   after_create do
-    if role == "customer"
-      collect = SystemModule.find_by(name: "collect")
+    if role == "customer" || role == "admin"
+      collect = SystemModule.find_or_create_by(name: "collect")
 
       system_module_users.create(system_module_id: collect.id)
     end
