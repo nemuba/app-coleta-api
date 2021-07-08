@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Swagger
   class Authentication
     include ::Swagger::Blocks
@@ -13,4 +15,3 @@ module Swagger
     end
   end
 end
-

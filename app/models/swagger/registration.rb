@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Swagger
   class Registration
     include ::Swagger::Blocks
@@ -22,4 +24,3 @@ module Swagger
     end
   end
 end
-
