@@ -8,6 +8,7 @@ module Api
         before_action :authenticate_resource, only: [:destroy]
 
         def create
+          byebug
           if resource.authenticate(resource_params[:password])
             create_token_and_set_header(resource, resource_name)
             # render_success(message: I18n.t('api_guard.authentication.signed_in'))

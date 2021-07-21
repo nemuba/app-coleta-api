@@ -14,7 +14,7 @@ Rails.application.routes.draw do
       resources :system_modules, path: "systemmodules"
       resources :system_module_user, path: "systemmoduleuser"
       resources :item_types, path: "itemtypes"
-      get "currentuser", to: "current_user#show"
+      get "currentusers", to: "current_users#show"
 
       namespace :collect do
         resources :profiles
