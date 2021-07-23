@@ -5,8 +5,16 @@ module Api
     class CurrentUsersController < ApplicationController
       before_action :authenticate_and_set_user
 
+      INCLUDES = [
+        "routes",
+        "collects",
+        "user_modules",
+        "profile",
+        "profile.address"
+      ].freeze
+
       def show
-        render json: current_user, serializer: UserSerializer
+        render json: current_user, serializer: UserSerializer, include: INCLUDES
       end
     end
   end
