@@ -11,7 +11,7 @@ module Api
           if resource.authenticate(resource_params[:password])
             create_token_and_set_header(resource, resource_name)
             # render_success(message: I18n.t('api_guard.authentication.signed_in'))
-            render json: resource
+            render json: UserSerializer.new(resource).as_json
           else
             render_error(422,
                          message: I18n.t("api_guard.authentication.invalid_login_credentials"))

@@ -11,7 +11,7 @@ module Api
           if resource.save
             create_token_and_set_header(resource, resource_name)
             # render_success(message: I18n.t("api_guard.registration.signed_up"))
-            render json: resource
+            render json: UserSerializer.new(resource).as_json
           else
             render_error(422, object: resource)
           end
