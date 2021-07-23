@@ -5,4 +5,10 @@ class Profile < ApplicationRecord
   has_one :address, dependent: :destroy
 
   accepts_nested_attributes_for :address, allow_destroy: true
+
+  before_save :treat_phone
+
+  def treat_phone
+    self.phone = self.phone.gsub(/\D/, "")
+  end
 end
