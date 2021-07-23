@@ -65,6 +65,7 @@ module Api
                 number
                 neighborhood
                 city
+                state
                 country
                 zip_code
                 latitude

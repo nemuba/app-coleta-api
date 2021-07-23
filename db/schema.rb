@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_02_182440) do
+ActiveRecord::Schema.define(version: 2021_07_23_023209) do
 
   create_table "addresses", charset: "utf8mb4", force: :cascade do |t|
     t.string "street"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 2021_07_02_182440) do
     t.bigint "profile_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "state"
     t.index ["profile_id"], name: "index_addresses_on_profile_id"
   end
 

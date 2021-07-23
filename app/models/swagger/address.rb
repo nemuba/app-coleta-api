@@ -26,6 +26,10 @@ module Swagger
         key :type, :string
       end
 
+      property :state do
+        key :type, :string
+      end
+
       property :country do
         key :type, :string
       end
