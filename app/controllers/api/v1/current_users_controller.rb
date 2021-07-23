@@ -6,7 +6,7 @@ module Api
       before_action :authenticate_and_set_user
 
       def show
-        render json: current_user, serializer: UserSerializer, include: ["profile", "profile.address"]
+        render json: current_user, serializer: UserSerializer
       end
     end
   end
