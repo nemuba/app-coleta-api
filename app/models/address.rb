@@ -9,6 +9,6 @@ class Address < ApplicationRecord
   after_validation :geocode
 
   def address
-    [street, neighborhood, number, city, state, country].compact.join(", ")
+    [number, street, neighborhood, city, state].compact.join(", ")
   end
 end
