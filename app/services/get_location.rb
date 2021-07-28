@@ -4,8 +4,8 @@ class GetLocation
   attr_accessor :longitude, :latitude, :address
 
   def initialize(longitude, latitude)
-    @longitude = longitude
-    @latitude = latitude
+    @longitude = longitude.to_f
+    @latitude = latitude.to_f
   end
 
   def self.call(longitude, latitude)
