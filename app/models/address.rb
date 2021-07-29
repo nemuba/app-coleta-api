@@ -16,6 +16,7 @@ class Address < ApplicationRecord
 
   geocoded_by :address
   after_initialize :geocode
+  before_validation :geocode, on: [:update]
 
   def address
     [number, street, neighborhood, city, state].compact.join(", ")

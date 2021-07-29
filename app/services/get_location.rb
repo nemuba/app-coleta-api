@@ -15,11 +15,11 @@ class GetLocation
   def call
     data = Geocoder.search([longitude, latitude])
     return location_not_found unless data.present?
-    
+
     @address = data.first
-    
+
     return location_not_found unless address.present? && address.data["address_components"].present?
-    
+
     location
   end
 
