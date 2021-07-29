@@ -18,6 +18,16 @@ module Api
           json_response(@user)
         end
 
+        def create
+          user = User.new(user_params)
+
+          if user.save
+            json_response(user)
+          else
+            json_response_error(user.error)
+          end
+        end
+
         def update
           if @user.update(user_params)
             json_response(@user)
