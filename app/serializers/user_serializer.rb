@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class UserSerializer < ActiveModel::Serializer
+class UserSerializer < BaseSerializer
   attributes :id, :email, :role, :created_at, :updated_at
   has_one :profile
 
