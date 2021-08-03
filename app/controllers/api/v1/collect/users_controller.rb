@@ -7,15 +7,22 @@ module Api
         before_action :authenticate_and_set_user
         before_action :set_profile, only: %i[show update destroy]
         load_and_authorize_resource
+        INCLUDES = [
+          "routes",
+          "collects",
+          "user_modules",
+          "profile",
+          "profile.address"
+        ].freeze
 
         def index
           @users = User.all
 
-          json_response(@users)
+          json_response(@users, :ok, include: INCLUDES)
         end
 
         def show
-          json_response(@user)
+          json_response(@user, :ok, include: INCLUDES)
         end
 
         def create
