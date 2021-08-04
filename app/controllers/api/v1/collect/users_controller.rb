@@ -54,7 +54,8 @@ module Api
               :password,
               :password_confirmation,
               :role,
-              user_point_attributes: [:id, :value, :_destroy]
+              user_point_attributes: [:id, :value, :_destroy],
+              profile_attributes: [:id, :name, :email, :phone, :document, :_destroy]
             )
           end
 

@@ -13,6 +13,7 @@ class User < ApplicationRecord
   has_one :user_point, dependent: :destroy
 
   accepts_nested_attributes_for :user_point, allow_destroy: true
+  accepts_nested_attributes_for :profile, allow_destroy: true
 
   enum role: { admin: 0, customer: 1, business: 2, collector: 3 }
 
