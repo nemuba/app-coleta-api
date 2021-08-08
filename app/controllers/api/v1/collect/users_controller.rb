@@ -7,6 +7,7 @@ module Api
         before_action :authenticate_and_set_user
         before_action :set_profile, only: %i[show update destroy]
         load_and_authorize_resource
+
         INCLUDES = [
           "routes",
           "collects",
@@ -55,7 +56,14 @@ module Api
               :password_confirmation,
               :role,
               user_point_attributes: [:id, :value, :_destroy],
-              profile_attributes: [:id, :name, :email, :phone, :document, :_destroy]
+              profile_attributes: [
+                :id,
+                :name,
+                :email,
+                :phone,
+                :document,
+                address_attributes: [:id, :street, :number, :complement, :neighborhood, :city, :state, :country, :zip_code, :_destroy]
+                :_destroy]
             )
           end
 
