@@ -62,8 +62,8 @@ module Api
                 :email,
                 :phone,
                 :document,
-                address_attributes: [:id, :street, :number, :complement, :neighborhood, :city, :state, :country, :zip_code, :_destroy],
-                :_destroy
+                :_destroy,
+                address_attributes: [:id, :street, :number, :complement, :neighborhood, :city, :state, :country, :zip_code, :_destroy]
               ]
             )
           end
