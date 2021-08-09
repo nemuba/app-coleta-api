@@ -8,4 +8,5 @@ class UserSerializer < BaseSerializer
   has_many :products
   has_many :collects
   has_many :user_modules
+  has_many :system_module_users
 end

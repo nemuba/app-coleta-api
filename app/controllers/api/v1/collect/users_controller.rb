@@ -5,13 +5,14 @@ module Api
     module Collect
       class UsersController < ApplicationController
         before_action :authenticate_and_set_user
-        before_action :set_profile, only: %i[show update destroy]
+        before_action :set_user, only: %i[show update destroy]
         load_and_authorize_resource
 
         INCLUDES = [
           "routes",
           "collects",
           "user_modules",
+          "system_module_users",
           "profile",
           "profile.address"
         ].freeze
@@ -55,15 +56,17 @@ module Api
               :password,
               :password_confirmation,
               :role,
+              system_module_users_attributes: [:id, :user_id, :system_module_id, :_destroy],
               user_point_attributes: [:id, :value, :_destroy],
               profile_attributes: [
                 :id,
+                :user_id,
                 :name,
                 :email,
                 :phone,
                 :document,
                 :_destroy,
-                address_attributes: [:id, :street, :number, :complement, :neighborhood, :city, :state, :country, :zip_code, :_destroy]
+                address_attributes: [:id, :profile_id, :street, :number, :complement, :neighborhood, :city, :state, :country, :zip_code, :_destroy]
               ]
             )
           end
