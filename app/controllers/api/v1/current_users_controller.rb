@@ -8,9 +8,11 @@ module Api
       INCLUDES = [
         "routes",
         "collects",
+        "collects.collect_status",
         "user_modules",
         "profile",
-        "profile.address"
+        "profile.address",
+        "user_point"
       ].freeze
 
       def show
