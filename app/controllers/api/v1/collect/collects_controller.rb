@@ -48,7 +48,7 @@ module Api
         private
           # Use callbacks to share common setup or constraints between actions.
           def set_collect
-            @collect = Collect.find(params[:id])
+            @collect = ::Collect.find(params[:id])
           end
 
           # Only allow a list of trusted parameters through.
