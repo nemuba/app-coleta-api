@@ -12,7 +12,7 @@ module Api
 
         # GET /collects
         def index
-          @collects = ::Collect.includes(INCLUDES)
+          @collects = ::Collect.all
 
           render json: @collects, include: INCLUDES
         end
