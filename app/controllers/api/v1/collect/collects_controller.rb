@@ -8,16 +8,18 @@ module Api
         before_action :set_collect, only: [:show, :update, :destroy]
         load_and_authorize_resource
 
+        INCLUDES = ["user", "user.profile", "user.profile.address", "collect_status"].freeze
+
         # GET /collects
         def index
-          @collects = ::Collect.all
+          @collects = ::Collect.includes(INCLUDES)
 
-          json_response(@collects)
+          render json: @collects, include: INCLUDES
         end
 
         # GET /collects/1
         def show
-          json_response(@collect)
+          render json: @collects, include: INCLUDES
         end
 
         # POST /collects
@@ -25,7 +27,7 @@ module Api
           @collect = current_user.collects.build(collect_params)
 
           if @collect.save
-            json_response(@collect, :created)
+            render json: @collect, status: :created, include: INCLUDES
           else
             json_response_error(@collect.errors)
           end
@@ -34,7 +36,7 @@ module Api
         # PATCH/PUT /collects/1
         def update
           if @collect.update(collect_params)
-            json_response(@collect)
+            render json: @collect, include: INCLUDES
           else
             json_response_error(@collect.errors)
           end
