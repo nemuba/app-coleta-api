@@ -10,7 +10,7 @@ module Api
 
         # GET /collects
         def index
-          @collects = Collect.all
+          @collects = ::Collect.all
 
           json_response(@collects)
         end
