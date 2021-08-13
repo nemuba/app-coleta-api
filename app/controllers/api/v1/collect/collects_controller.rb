@@ -19,7 +19,7 @@ module Api
 
         # GET /collects/1
         def show
-          render json: @collects, include: INCLUDES
+          render json: @collect, include: INCLUDES
         end
 
         # POST /collects
