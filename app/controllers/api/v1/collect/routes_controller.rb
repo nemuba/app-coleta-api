@@ -22,7 +22,7 @@ module Api
 
         # POST /routes
         def create
-          route = current_user.routes.build(route_params)
+          route = Route.new(route_params)
 
           if route.save
             json_response(route, :created)

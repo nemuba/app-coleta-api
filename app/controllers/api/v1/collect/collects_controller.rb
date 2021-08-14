@@ -24,7 +24,7 @@ module Api
 
         # POST /collects
         def create
-          @collect = current_user.collects.build(collect_params)
+          @collect = ::Collect.new(collect_params)
 
           if @collect.save
             render json: @collect, status: :created, include: INCLUDES
