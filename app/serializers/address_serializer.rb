@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class AddressSerializer < ActiveModel::Serializer
+class AddressSerializer < BaseSerializer
   attributes :id,
              :street,
              :number,
@@ -11,6 +11,4 @@ class AddressSerializer < ActiveModel::Serializer
              :zip_code,
              :latitude,
              :longitude,
-             :created_at,
-             :updated_at
 end

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-class ItemCollectSerializer < ActiveModel::Serializer
-  attributes :id, :item_id, :collect_id, :created_at, :updated_at
+class ItemCollectSerializer < BaseSerializer
+  attributes :id, :item_id, :collect_id
 
   has_one :collect
 end
