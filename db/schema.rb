@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_23_023209) do
+ActiveRecord::Schema.define(version: 2021_08_16_124858) do
 
   create_table "addresses", charset: "utf8mb4", force: :cascade do |t|
     t.string "street"
@@ -114,9 +114,8 @@ ActiveRecord::Schema.define(version: 2021_07_23_023209) do
   end
 
   create_table "routes", charset: "utf8mb4", force: :cascade do |t|
-    t.date "date_collect"
-    t.datetime "date_start"
-    t.datetime "date_finish"
+    t.date "collect_date"
+    t.datetime "request_date"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

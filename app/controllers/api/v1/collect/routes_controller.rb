@@ -55,9 +55,8 @@ module Api
           def route_params
             params.require(:route).permit(
               :user_id,
-              :date_collect,
-              :date_start,
-              :date_finish,
+              :collect_date,
+              :request_date,
               route_collects_attributes: [:id, :collect_id, :order, :_destroy]
             )
           end

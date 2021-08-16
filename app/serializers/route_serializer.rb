@@ -1,26 +1,20 @@
 # frozen_string_literal: true
 
 class RouteSerializer < BaseSerializer
-  attributes :id, :user_id, :date_collect, :date_start, :date_finish
+  attributes :id, :user_id, :collect_date, :request_date
 
   has_one :user
   has_many :route_collects
 
-  def date_start
-    return unless object.date_start
+  def collect_date
+    return unless object.collect_date
 
-    object.date_start.strftime('%d/%m/%Y')
+    object.collect_date.strftime('%d/%m/%Y')
   end
 
-  def date_finish
-    return unless object.date_finish
+  def request_date
+    return unless object.request_date
 
-    object.date_finish.strftime('%d/%m/%Y')
-  end
-
-  def date_collect
-    return unless object.date_collect
-
-    object.date_collect.strftime('%d/%m/%Y')
+    object.request_date.strftime('%d/%m/%Y')
   end
 end
