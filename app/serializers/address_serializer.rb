@@ -10,5 +10,5 @@ class AddressSerializer < BaseSerializer
              :country,
              :zip_code,
              :latitude,
-             :longitude,
+             :longitude
 end
