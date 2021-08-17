@@ -9,12 +9,12 @@ class RouteSerializer < BaseSerializer
   def collect_date
     return unless object.collect_date
 
-    object.collect_date.strftime('%d/%m/%Y')
+    object.collect_date.strftime("%Y-%m-%d")
   end
 
   def request_date
     return unless object.request_date
 
-    object.request_date.strftime('%d/%m/%Y')
+    object.request_date.strftime("%Y-%m-%d")
   end
 end
