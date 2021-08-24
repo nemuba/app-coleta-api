@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class UserSerializer < BaseSerializer
-  attributes :id, :email, :role
+  attributes :id, :email, :role, :token
 
   has_one :profile
   has_many :routes

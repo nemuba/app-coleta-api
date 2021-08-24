@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_16_124858) do
+ActiveRecord::Schema.define(version: 2021_08_24_023306) do
 
   create_table "addresses", charset: "utf8mb4", force: :cascade do |t|
     t.string "street"
@@ -153,6 +153,7 @@ ActiveRecord::Schema.define(version: 2021_08_16_124858) do
     t.integer "role", default: 1
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "token", limit: 250
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

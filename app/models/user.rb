@@ -2,6 +2,7 @@
 
 class User < ApplicationRecord
   has_secure_password
+  has_secure_token
 
   has_one :profile, dependent: :destroy
   has_many :system_module_users, dependent: :destroy
