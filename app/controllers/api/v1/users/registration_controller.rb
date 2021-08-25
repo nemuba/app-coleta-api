@@ -30,7 +30,7 @@ module Api
           end
 
           def set_user_point
-            byebug
+            puts params[:auth]
             return unless params[:auth][:token].present?
 
             user = User.find_by_token(params[:auth][:token])
