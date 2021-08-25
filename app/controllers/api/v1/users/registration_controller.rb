@@ -6,7 +6,7 @@ module Api
       class RegistrationController < ApiGuard::RegistrationController
         before_action :authenticate_resource, only: [:destroy]
         after_action :set_user_point, only: [:create]
-        
+
         def create
           user_params = sign_up_params
           init_resource(user_params.except(:token))
@@ -30,16 +30,17 @@ module Api
           end
 
           def set_user_point
-            return unless params[:token].present?
+            byebug
+            return unless params[:auth][:token].present?
 
-            self.resource = resource_class.find_by(token: params[:token])
-            return unless resource
+            user = User.find_by_token(params[:auth][:token])
+            return unless user
 
-            unless resource.user_point.present?
-              resource.update!(user_point_attributes: { value: 10 })
+            unless user.user_point.present?
+              user.update!(user_point_attributes: { value: 10 })
             else
-              points = resource.user_point
-              resource.update!(user_point_attributes: { id: points.id, value: points.value + 10 })
+              points = user.user_point
+              user.update!(user_point_attributes: { id: points.id, value: points.value + 10 })
             end
           end
       end
