@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_24_023306) do
+ActiveRecord::Schema.define(version: 2021_08_26_120712) do
 
   create_table "addresses", charset: "utf8mb4", force: :cascade do |t|
     t.string "street"
@@ -42,6 +42,15 @@ ActiveRecord::Schema.define(version: 2021_08_24_023306) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_collects_on_user_id"
+  end
+
+  create_table "configs", charset: "utf8mb4", force: :cascade do |t|
+    t.string "param"
+    t.integer "value"
+    t.bigint "system_module_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["system_module_id"], name: "index_configs_on_system_module_id"
   end
 
   create_table "item_collects", charset: "utf8mb4", force: :cascade do |t|
@@ -160,6 +169,7 @@ ActiveRecord::Schema.define(version: 2021_08_24_023306) do
   add_foreign_key "addresses", "profiles"
   add_foreign_key "collect_statuses", "collects"
   add_foreign_key "collects", "users"
+  add_foreign_key "configs", "system_modules"
   add_foreign_key "item_collects", "collects"
   add_foreign_key "item_collects", "items"
   add_foreign_key "items", "item_types"

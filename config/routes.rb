@@ -14,6 +14,8 @@ Rails.application.routes.draw do
       resources :system_modules, path: "systemmodules"
       resources :system_module_user, path: "systemmoduleuser"
       resources :item_types, path: "itemtypes"
+      resources :configs
+
       get "currentusers", to: "current_users#show"
       post "getlocation", to: "get_location#create"
 

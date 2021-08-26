@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RemoveColumnsToRoutes < ActiveRecord::Migration[6.1]
   def change
     remove_column :routes, :date_finish
