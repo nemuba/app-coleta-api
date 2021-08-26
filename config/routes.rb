@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       api_guard_routes for: "users", controller: {
         registration: "users/registration",
         authentication: "users/authentication"
+        tokens: "users/tokens"
       }
 
       resources :api_docs, path: "apidocs", only: [:index]

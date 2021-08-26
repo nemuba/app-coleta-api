@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_26_120712) do
+ActiveRecord::Schema.define(version: 2021_08_26_135157) do
 
   create_table "addresses", charset: "utf8mb4", force: :cascade do |t|
     t.string "street"
@@ -112,6 +112,15 @@ ActiveRecord::Schema.define(version: 2021_08_26_120712) do
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
+  create_table "refresh_tokens", charset: "utf8mb4", force: :cascade do |t|
+    t.string "token"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["token"], name: "index_refresh_tokens_on_token", unique: true
+    t.index ["user_id"], name: "index_refresh_tokens_on_user_id"
+  end
+
   create_table "route_collects", charset: "utf8mb4", force: :cascade do |t|
     t.bigint "route_id", null: false
     t.bigint "collect_id", null: false
@@ -178,6 +187,7 @@ ActiveRecord::Schema.define(version: 2021_08_26_120712) do
   add_foreign_key "point_histories", "users", column: "collector_id"
   add_foreign_key "products", "users"
   add_foreign_key "profiles", "users"
+  add_foreign_key "refresh_tokens", "users"
   add_foreign_key "route_collects", "collects"
   add_foreign_key "route_collects", "routes"
   add_foreign_key "routes", "users"

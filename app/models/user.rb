@@ -4,6 +4,9 @@ class User < ApplicationRecord
   has_secure_password
   has_secure_token
 
+  api_guard_associations refresh_token: "refresh_tokens"
+  has_many :refresh_tokens, dependent: :delete_all
+
   has_one :profile, dependent: :destroy
   has_many :system_module_users, dependent: :destroy
   has_many :user_modules, through: :system_module_users, source: :system_module
