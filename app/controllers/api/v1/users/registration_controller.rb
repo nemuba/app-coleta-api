@@ -36,11 +36,13 @@ module Api
             user = User.find_by_token(params[:auth][:token])
             return unless user
 
+            user_point = Config.find_by_param("user_point")
+
             unless user.user_point.present?
-              user.update!(user_point_attributes: { value: 10 })
+              user.update!(user_point_attributes: { value: user_point.value })
             else
               points = user.user_point
-              user.update!(user_point_attributes: { id: points.id, value: points.value + 10 })
+              user.update!(user_point_attributes: { id: points.id, value: points.value + user_point.value })
             end
           end
       end

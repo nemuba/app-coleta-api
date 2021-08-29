@@ -7,10 +7,18 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-admin = User.create(email: "admin@admin.com", password: "123456789", password_confirmation: "123456789", role: 0)
+admin = nil 
+
+['admin@admin.com'].each do |user|
+  unless User.find_by_email(user)
+    admin = User.create(email: user, password: "123456789", password_confirmation: "123456789", role: 0)
+  end
+end
 
 ["collect"].each do |system_module|
-  s_module = SystemModule.create(name: system_module, user_id: admin.id)
+  s_module = SystemModule.find_or_create_by(name: system_module, user_id: admin.id)
 
-  SystemModuleUser.create(user_id: admin.id, system_module_id: s_module.id)
+  SystemModuleUser.find_or_create_by(user_id: admin.id, system_module_id: s_module.id)
+
+  Config.find_or_create_by(system_module_id: s_module.id, param: "user_point", value: 100)
 end
