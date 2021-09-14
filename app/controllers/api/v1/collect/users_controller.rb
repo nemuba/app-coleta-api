@@ -14,7 +14,8 @@ module Api
           "user_modules",
           "system_module_users",
           "profile",
-          "profile.address"
+          "profile.address",
+          "user_point"
         ].freeze
 
         def index

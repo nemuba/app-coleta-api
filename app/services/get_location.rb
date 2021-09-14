@@ -18,7 +18,7 @@ class GetLocation
 
     @address = data.first
 
-    return location_not_found unless address.present? && address.data["address_components"].present?
+    return location_not_found unless address.present? && address&.data["address_components"].present?
 
     location
   end
@@ -26,13 +26,13 @@ class GetLocation
   def location
     {
       location: {
-        number: address.data["address_components"][0]["long_name"],
-        street: address.data["address_components"][1]["long_name"],
-        neighborhood: address.data["address_components"][2]["long_name"],
-        city: address.data["address_components"][3]["long_name"],
-        state: address.data["address_components"][4]["long_name"],
-        country: address.data["address_components"][5]["long_name"],
-        zipcode: address.data["address_components"][6]["long_name"]
+        number: address&.data["address_components"][0]["long_name"],
+        street: address&.data["address_components"][1]["long_name"],
+        neighborhood: address&.data["address_components"][2]["long_name"],
+        city: address&.data["address_components"][3]["long_name"],
+        state: address&.data["address_components"][4]["long_name"],
+        country: address&.data["address_components"][5]["long_name"],
+        zipcode: address&.data["address_components"][6]["long_name"]
       }
     }
   end
