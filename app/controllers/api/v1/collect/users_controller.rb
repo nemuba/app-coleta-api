@@ -34,7 +34,7 @@ module Api
           if user.save
             json_response(user)
           else
-            json_response_error(user.error)
+            json_response_error(user.errors)
           end
         end
 
@@ -42,7 +42,7 @@ module Api
           if @user.update(user_params)
             json_response(@user)
           else
-            json_response_error(@user.error)
+            json_response_error(@user.errors)
           end
         end
 
@@ -67,7 +67,21 @@ module Api
                 :phone,
                 :document,
                 :_destroy,
-                address_attributes: [:id, :profile_id, :street, :number, :complement, :neighborhood, :city, :state, :country, :zip_code, :_destroy]
+                address_attributes: [
+                  :id,
+                  :profile_id,
+                  :street,
+                  :number,
+                  :complement,
+                  :neighborhood,
+                  :city,
+                  :state,
+                  :country,
+                  :zip_code,
+                  :latitude,
+                  :longitude,
+                  :_destroy
+                ]
               ]
             )
           end

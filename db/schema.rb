@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_26_135157) do
+ActiveRecord::Schema.define(version: 2022_04_15_162619) do
 
   create_table "addresses", charset: "utf8mb4", force: :cascade do |t|
     t.string "street"
@@ -112,9 +112,19 @@ ActiveRecord::Schema.define(version: 2021_08_26_135157) do
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
+  create_table "recyclables", charset: "utf8mb4", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "unit_of_measurement", default: 0, null: false
+    t.float "measure", null: false
+    t.integer "point", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "refresh_tokens", charset: "utf8mb4", force: :cascade do |t|
     t.string "token"
     t.bigint "user_id", null: false
+    t.datetime "expire_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["token"], name: "index_refresh_tokens_on_token", unique: true
