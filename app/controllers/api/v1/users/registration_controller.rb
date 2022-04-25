@@ -12,7 +12,8 @@ module Api
           init_resource(user_params.except(:token))
           if resource.save
             create_token_and_set_header(resource, resource_name)
-            # render_success(message: I18n.t("api_guard.registration.signed_up"))
+            # render_success(message: I18n.t('api_guard.registration.signed_up'))
+
             render json: resource
           else
             render_error(422, object: resource)
