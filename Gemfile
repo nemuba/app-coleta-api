@@ -10,11 +10,11 @@ gem "api_guard"
 gem "bcrypt", "~> 3.1.7"
 gem "bootsnap", ">= 1.4.4", require: false
 gem "cancancan"
-gem "mysql2", "~> 0.5"
 gem "puma", "~> 5.0"
 gem "rack-cors"
 gem "rails", "~> 6.1.3", ">= 6.1.3.2"
 gem "swagger-blocks"
+gem "pg"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
