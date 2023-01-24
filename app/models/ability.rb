@@ -14,7 +14,7 @@ class Ability
     can :manage, Profile, user_id: user.id
     can :manage, User, id: user.id
     can :manage, Collect, user_id: user.id
-
+    can :manage, Product, user_id: user.id
     return unless user.admin?
 
     can :manage, :all
