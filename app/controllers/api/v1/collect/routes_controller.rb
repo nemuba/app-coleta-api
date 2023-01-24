@@ -59,6 +59,7 @@ module Api
               :user_id,
               :collect_date,
               :request_date,
+              :status,
               route_collects_attributes: [:id, :collect_id, :order, :_destroy]
             )
           end

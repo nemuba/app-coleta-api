@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class RouteSerializer < BaseSerializer
-  attributes :id, :user_id, :collect_date, :request_date
+  attributes :id, :user_id, :collect_date, :request_date, :status
 
   has_one :user
   has_many :route_collects
