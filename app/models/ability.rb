@@ -15,6 +15,11 @@ class Ability
     can :manage, User, id: user.id
     can :manage, Collect, user_id: user.id
     can :manage, Product, user_id: user.id
+    can :manage, Customer, id: user.id
+
+    can :read, Customer if user.business?
+    can :update, Customer if user.business?
+
     return unless user.admin?
 
     can :manage, :all

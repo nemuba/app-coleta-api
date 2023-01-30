@@ -3,13 +3,12 @@
 module Api
   module V1
     module Collect
-      class UsersController < ApplicationController
+      class CustomersController < ApplicationController
         before_action :authenticate_and_set_user
-        before_action :set_user, only: %i[show update destroy]
+        before_action :set_customer, only: %i[show update destroy]
         load_and_authorize_resource
 
         INCLUDES = [
-          "routes",
           "collects",
           "user_modules",
           "system_module_users",
@@ -20,17 +19,17 @@ module Api
         ].freeze
 
         def index
-          @users = User.all
+          @customers = Customer.all
 
-          json_response(@users, :ok, include: INCLUDES)
+          json_response(@customers, :ok, include: INCLUDES, collection_serializer: CustomerSerializer)
         end
 
         def show
-          json_response(@user, :ok, include: INCLUDES)
+          json_response(@customer, :ok, include: INCLUDES)
         end
 
         def create
-          user = User.new(user_params)
+          user = Customer.new(customer_params)
 
           if user.save
             json_response(user)
@@ -40,20 +39,20 @@ module Api
         end
 
         def update
-          if @user.update(user_params)
-            json_response(@user)
+          if @customer.update(customer_params)
+            json_response(@customer)
           else
-            json_response_error(@user.errors)
+            json_response_error(@customer.errors)
           end
         end
 
         def destroy
-          @user.destroy
+          @customer.destroy
         end
 
         private
-          def user_params
-            params.require(:user).permit(
+          def customer_params
+            params.require(:customer).permit(
               :email,
               :password,
               :password_confirmation,
@@ -86,6 +85,9 @@ module Api
               ],
               product_user_histories_attributes: [
                 :id,
+                :user_id,
+                :user_points,
+                :total_points,
                 :product_id,
                 :quantity,
                 :_destroy
@@ -93,8 +95,8 @@ module Api
             )
           end
 
-          def set_user
-            @user = User.find(params[:id])
+          def set_customer
+            @customer = Customer.find(params[:id])
           end
       end
     end

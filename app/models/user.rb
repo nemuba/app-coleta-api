@@ -1,11 +1,7 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
-  has_secure_password
-  has_secure_token
-
-  api_guard_associations refresh_token: "refresh_tokens"
-  has_many :refresh_tokens, dependent: :delete_all
+  include Authentication
 
   has_one :profile, dependent: :destroy
   has_many :system_module_users, dependent: :destroy
@@ -15,10 +11,12 @@ class User < ApplicationRecord
   has_many :routes, dependent: :destroy
   has_many :point_histories, dependent: :destroy
   has_one :user_point, dependent: :destroy
+  has_many :product_user_histories, dependent: :destroy
 
   accepts_nested_attributes_for :user_point, allow_destroy: true
   accepts_nested_attributes_for :profile, allow_destroy: true
   accepts_nested_attributes_for :system_module_users, allow_destroy: true
+  accepts_nested_attributes_for :product_user_histories, allow_destroy: true
 
   enum role: { admin: 0, customer: 1, business: 2, collector: 3 }
 

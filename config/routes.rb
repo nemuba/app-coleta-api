@@ -24,6 +24,7 @@ Rails.application.routes.draw do
       post "getlocation", to: "get_location#create"
 
       namespace :collect do
+        resources :customers
         resources :profiles
         resources :products
         resources :collects
