@@ -1,11 +1,9 @@
 # frozen_string_literal: true
 
-class UserSerializer < BaseSerializer
+class CustomerSerializer < BaseSerializer
   attributes :id, :email, :role, :token
 
   has_one :profile
-  has_many :routes
-  has_many :products
   has_many :collects
   has_many :user_modules
   has_many :system_module_users

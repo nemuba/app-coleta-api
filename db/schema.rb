@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_01_24_013542) do
+ActiveRecord::Schema.define(version: 2023_01_27_004735) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -92,6 +92,19 @@ ActiveRecord::Schema.define(version: 2023_01_24_013542) do
     t.index ["collect_id"], name: "index_point_histories_on_collect_id"
     t.index ["collector_id"], name: "index_point_histories_on_collector_id"
     t.index ["user_id"], name: "index_point_histories_on_user_id"
+  end
+
+  create_table "product_user_histories", force: :cascade do |t|
+    t.bigint "product_id", null: false
+    t.bigint "user_id", null: false
+    t.integer "quantity", default: 1
+    t.integer "total_points"
+    t.integer "user_points"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["product_id", "user_id"], name: "index_product_user_histories_on_product_id_and_user_id"
+    t.index ["product_id"], name: "index_product_user_histories_on_product_id"
+    t.index ["user_id"], name: "index_product_user_histories_on_user_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -199,6 +212,8 @@ ActiveRecord::Schema.define(version: 2023_01_24_013542) do
   add_foreign_key "point_histories", "collects"
   add_foreign_key "point_histories", "users"
   add_foreign_key "point_histories", "users", column: "collector_id"
+  add_foreign_key "product_user_histories", "products"
+  add_foreign_key "product_user_histories", "users"
   add_foreign_key "products", "users"
   add_foreign_key "profiles", "users"
   add_foreign_key "refresh_tokens", "users"
