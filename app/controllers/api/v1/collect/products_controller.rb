@@ -10,7 +10,7 @@ module Api
 
         # GET /products
         def index
-          @products = Product.all
+          @products = current_user.products
 
           json_response(@products)
         end
