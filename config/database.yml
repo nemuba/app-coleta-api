@@ -12,13 +12,13 @@
 # Configure Using Gemfile
 # gem 'pg'
 #
-default:
+default: &default
   adapter: postgresql
   encoding: unicode
   pool: 5
   
 development:
-  <<: &default  
+  <<: *default  
   database: <%= ENV['DATABASE_NAME'] %>
   username: <%= ENV['DATABASE_USERNAME'] %>
   password: <%= ENV['DATABASE_PASSWORD'] %>
@@ -26,9 +26,9 @@ development:
   port: <%= ENV['DATABASE_PORT'] %>
 
 test:
-  <<: &development
+  <<: *default
   database: <%= ENV['DATABASE_NAME_TEST'] %>
 
 production:
-  <<: &development
+  <<: *default
   url: <%= ENV['DATABASE_URL'] %>
