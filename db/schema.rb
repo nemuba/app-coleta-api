@@ -12,10 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2023_01_27_004735) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
-  create_table "addresses", force: :cascade do |t|
+  create_table "addresses", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "street"
     t.string "number"
     t.string "neighborhood"
@@ -31,7 +28,7 @@ ActiveRecord::Schema.define(version: 2023_01_27_004735) do
     t.index ["profile_id"], name: "index_addresses_on_profile_id"
   end
 
-  create_table "collect_statuses", force: :cascade do |t|
+  create_table "collect_statuses", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.bigint "collect_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -39,7 +36,7 @@ ActiveRecord::Schema.define(version: 2023_01_27_004735) do
     t.index ["collect_id"], name: "index_collect_statuses_on_collect_id"
   end
 
-  create_table "collects", force: :cascade do |t|
+  create_table "collects", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "note"
     t.datetime "created_at", precision: 6, null: false
@@ -47,7 +44,7 @@ ActiveRecord::Schema.define(version: 2023_01_27_004735) do
     t.index ["user_id"], name: "index_collects_on_user_id"
   end
 
-  create_table "configs", force: :cascade do |t|
+  create_table "configs", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "param"
     t.integer "value"
     t.bigint "system_module_id", null: false
@@ -56,7 +53,7 @@ ActiveRecord::Schema.define(version: 2023_01_27_004735) do
     t.index ["system_module_id"], name: "index_configs_on_system_module_id"
   end
 
-  create_table "item_collects", force: :cascade do |t|
+  create_table "item_collects", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "item_id", null: false
     t.bigint "collect_id", null: false
     t.float "weight"
@@ -66,13 +63,13 @@ ActiveRecord::Schema.define(version: 2023_01_27_004735) do
     t.index ["item_id"], name: "index_item_collects_on_item_id"
   end
 
-  create_table "item_types", force: :cascade do |t|
+  create_table "item_types", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "items", force: :cascade do |t|
+  create_table "items", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "point"
     t.float "point_weight"
     t.string "name"
@@ -82,7 +79,7 @@ ActiveRecord::Schema.define(version: 2023_01_27_004735) do
     t.index ["item_type_id"], name: "index_items_on_item_type_id"
   end
 
-  create_table "point_histories", force: :cascade do |t|
+  create_table "point_histories", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "collector_id", null: false
     t.bigint "collect_id", null: false
@@ -94,7 +91,7 @@ ActiveRecord::Schema.define(version: 2023_01_27_004735) do
     t.index ["user_id"], name: "index_point_histories_on_user_id"
   end
 
-  create_table "product_user_histories", force: :cascade do |t|
+  create_table "product_user_histories", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "product_id", null: false
     t.bigint "user_id", null: false
     t.integer "quantity", default: 1
@@ -107,7 +104,7 @@ ActiveRecord::Schema.define(version: 2023_01_27_004735) do
     t.index ["user_id"], name: "index_product_user_histories_on_user_id"
   end
 
-  create_table "products", force: :cascade do |t|
+  create_table "products", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.float "price"
     t.float "point"
@@ -117,7 +114,7 @@ ActiveRecord::Schema.define(version: 2023_01_27_004735) do
     t.index ["user_id"], name: "index_products_on_user_id"
   end
 
-  create_table "profiles", force: :cascade do |t|
+  create_table "profiles", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.string "phone"
     t.string "email"
@@ -128,7 +125,7 @@ ActiveRecord::Schema.define(version: 2023_01_27_004735) do
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
-  create_table "recyclables", force: :cascade do |t|
+  create_table "recyclables", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.integer "unit_of_measurement", default: 0, null: false
     t.float "measure", null: false
@@ -137,7 +134,7 @@ ActiveRecord::Schema.define(version: 2023_01_27_004735) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "refresh_tokens", force: :cascade do |t|
+  create_table "refresh_tokens", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "token"
     t.bigint "user_id", null: false
     t.datetime "expire_at"
@@ -147,7 +144,7 @@ ActiveRecord::Schema.define(version: 2023_01_27_004735) do
     t.index ["user_id"], name: "index_refresh_tokens_on_user_id"
   end
 
-  create_table "route_collects", force: :cascade do |t|
+  create_table "route_collects", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "route_id", null: false
     t.bigint "collect_id", null: false
     t.integer "order"
@@ -157,7 +154,7 @@ ActiveRecord::Schema.define(version: 2023_01_27_004735) do
     t.index ["route_id"], name: "index_route_collects_on_route_id"
   end
 
-  create_table "routes", force: :cascade do |t|
+  create_table "routes", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.date "collect_date"
     t.datetime "request_date"
     t.bigint "user_id", null: false
@@ -167,7 +164,7 @@ ActiveRecord::Schema.define(version: 2023_01_27_004735) do
     t.index ["user_id"], name: "index_routes_on_user_id"
   end
 
-  create_table "system_module_users", force: :cascade do |t|
+  create_table "system_module_users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "system_module_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -176,7 +173,7 @@ ActiveRecord::Schema.define(version: 2023_01_27_004735) do
     t.index ["user_id"], name: "index_system_module_users_on_user_id"
   end
 
-  create_table "system_modules", force: :cascade do |t|
+  create_table "system_modules", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -184,7 +181,7 @@ ActiveRecord::Schema.define(version: 2023_01_27_004735) do
     t.index ["user_id"], name: "index_system_modules_on_user_id"
   end
 
-  create_table "user_points", force: :cascade do |t|
+  create_table "user_points", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "value"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -192,7 +189,7 @@ ActiveRecord::Schema.define(version: 2023_01_27_004735) do
     t.index ["user_id"], name: "index_user_points_on_user_id"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "email"
     t.string "password_digest"
     t.integer "role", default: 1
