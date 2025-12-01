@@ -114,7 +114,6 @@ GEM
     mini_mime (1.1.2)
     minitest (5.16.3)
     msgpack (1.6.0)
-    mysql2 (0.5.5)
     nio4r (2.5.8)
     nokogiri (1.13.9-x86_64-linux)
       racc (~> 1.4)
@@ -219,6 +218,7 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
+    sqlite3 (1.7.3-x86_64-linux)
     swagger-blocks (3.0.0)
     thor (1.2.1)
     tilt (2.0.11)
@@ -246,7 +246,6 @@ DEPENDENCIES
   dotenv-rails
   geocoder (~> 1.6)
   listen (~> 3.3)
-  mysql2
   puma (~> 5.0)
   rack-cors
   rails (~> 6.1.3, >= 6.1.3.2)
@@ -254,6 +253,7 @@ DEPENDENCIES
   rubocop-rails_config
   solargraph
   spring
+  sqlite3 (~> 1.4)
   swagger-blocks
   tzinfo-data
 

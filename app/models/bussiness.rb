@@ -19,6 +19,6 @@ class Bussiness < ApplicationRecord
   has_many :product_user_histories,
            through: :products,
            foreign_key: :product_id
-           
+
   default_scope { where(role: User.roles[:business]) }
 end
