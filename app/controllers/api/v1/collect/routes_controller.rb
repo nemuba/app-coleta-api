@@ -36,7 +36,7 @@ module Api
         # PATCH/PUT /routes/1
         def update
           if @route.update(route_params)
-            render json: @route, status: :created, include: INCLUDES
+            render json: @route, status: :ok, include: INCLUDES
           else
             render json: @route.errors, status: :unprocessable_entity, include: INCLUDES
           end

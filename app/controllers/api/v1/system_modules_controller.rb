@@ -21,7 +21,7 @@ module Api
         system_module = SystemModule.new(system_module_params)
 
         if system_module.save
-          json_response(system_module)
+          json_response(system_module, :created)
         else
           json_response_error(system_module.errors)
         end

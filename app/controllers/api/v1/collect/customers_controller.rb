@@ -35,6 +35,7 @@ module Api
             json_response(user)
           else
             json_response_error(user.errors)
+
           end
         end
 

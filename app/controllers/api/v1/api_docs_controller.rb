@@ -34,6 +34,41 @@ module Api
             key :url, "https://swagger.io"
           end
         end
+
+        tag do
+          key :name, "Authentication"
+          key :description, "User authentication operations (Sign up, Sign in, Token refresh, Password change)"
+        end
+
+        tag do
+          key :name, "Recyclables"
+          key :description, "Recyclable materials management"
+        end
+
+        tag do
+          key :name, "Configs"
+          key :description, "System configurations (Admin only)"
+        end
+
+        tag do
+          key :name, "Current User"
+          key :description, "Current authenticated user operations"
+        end
+
+        tag do
+          key :name, "Location"
+          key :description, "Geolocation services"
+        end
+
+        tag do
+          key :name, "Customers"
+          key :description, "Customer management"
+        end
+
+        tag do
+          key :name, "Exchange Points"
+          key :description, "Points exchange for products"
+        end
         key :host, "app-coleta-api.herokuapp.com"
         key :basePath, "/api/v1"
         key :consumes, ["application/json"]
@@ -42,7 +77,10 @@ module Api
 
       # A list of all classes that have swagger_* declarations.
       SWAGGERED_CLASSES = [
+        # Error Model
         ::Swagger::ErrorModel,
+
+        # Collect Module Controllers & DTOs
         ::Api::V1::Collect::Swagger::CollectsController,
         ::Swagger::Collect,
         ::Swagger::CollectStatus,
@@ -52,26 +90,47 @@ module Api
         ::Swagger::User,
         ::Api::V1::Collect::Swagger::ProductsController,
         ::Swagger::Product,
-        ::Api::V1::Swagger::SystemModulesController,
-        ::Swagger::SystemModule,
-        ::Swagger::Address,
         ::Api::V1::Collect::Swagger::RoutesController,
         ::Swagger::Route,
         ::Swagger::RouteCollect,
-        ::Api::V1::Swagger::SystemModuleUserController,
-        ::Swagger::SystemModuleUser,
-        ::Swagger::UserPoint,
-        ::Api::V1::Swagger::ItemTypesController,
-        ::Swagger::ItemType,
         ::Api::V1::Collect::Swagger::ItemsController,
         ::Swagger::Item,
         ::Swagger::ItemCollect,
-        ::Api::V1::Users::Swagger::AuthenticationController,
-        ::Api::V1::Users::Swagger::RegistrationController,
         ::Api::V1::Collect::Swagger::PointHistoriesController,
         ::Swagger::PointHistory,
+        ::Api::V1::Collect::Swagger::CustomersController,
+        ::Swagger::Customer,
+        ::Api::V1::Collect::Swagger::ExchangePointsController,
+        ::Swagger::ExchangePoint,
+
+        # System Module Controllers & DTOs
+        ::Api::V1::Swagger::SystemModulesController,
+        ::Swagger::SystemModule,
+        ::Api::V1::Swagger::SystemModuleUserController,
+        ::Swagger::SystemModuleUser,
+        ::Swagger::Address,
+        ::Swagger::UserPoint,
+        ::Api::V1::Swagger::ItemTypesController,
+        ::Swagger::ItemType,
+
+        # ApiGuard Authentication Controllers & DTOs
+        ::Api::V1::Users::Swagger::AuthenticationController,
+        ::Api::V1::Users::Swagger::RegistrationController,
+        ::Api::V1::Users::Swagger::TokensController,
+        ::Api::V1::Users::Swagger::PasswordsController,
         ::Swagger::Authentication,
         ::Swagger::Registration,
+        ::Swagger::PasswordChange,
+
+        # New Controllers & DTOs
+        ::Api::V1::Swagger::RecyclablesController,
+        ::Swagger::Recyclable,
+        ::Api::V1::Swagger::ConfigsController,
+        ::Swagger::Config,
+        ::Api::V1::Swagger::CurrentUsersController,
+        ::Api::V1::Swagger::GetLocationController,
+        ::Swagger::Location,
+
         self,
       ].freeze
 

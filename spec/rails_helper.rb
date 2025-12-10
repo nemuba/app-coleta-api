@@ -24,8 +24,7 @@ require "rspec/rails"
 # of increasing the boot-up time by auto-requiring all files in the support
 # directory. Alternatively, in the individual `*_spec.rb` files, manually
 # require only the support files necessary.
-#
-# Rails.root.glob('spec/support/**/*.rb').sort_by(&:to_s).each { |f| require f }
+Rails.root.glob("spec/support/**/*.rb").sort_by(&:to_s).each { |f| require f }
 
 # Checks for pending migrations and applies them before tests are run.
 # If you are not using ActiveRecord, you can remove these lines.
@@ -43,7 +42,8 @@ RSpec.configure do |config|
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
-  config.use_transactional_fixtures = true
+  # Using Database Cleaner instead of transactional fixtures
+  config.use_transactional_fixtures = false
 
   # You can uncomment this line to turn off ActiveRecord support entirely.
   # config.use_active_record = false
@@ -52,7 +52,7 @@ RSpec.configure do |config|
   # for example enabling you to call `get` and `post` in request specs. e.g.:
   #
   #     RSpec.describe UsersController, type: :request do
-  #       # ...
+  #       # ..
   #     end
   #
   # The different available types are documented in the features, such as in
@@ -63,10 +63,16 @@ RSpec.configure do |config|
   # behaviour is considered legacy and will be removed in a future version.
   #
   # To enable this behaviour uncomment the line below.
-  # config.infer_spec_type_from_file_location!
+  config.infer_spec_type_from_file_location!
 
   # Filter lines from Rails gems in backtraces.
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+
+  # Include RequestSpecHelpers for request specs
+  config.include RequestSpecHelpers, type: :request
+
+  # Include ApiGuard test helper for JWT token generation
+  config.include ApiGuard::Test::ControllerHelper, type: :request
 end

@@ -13,6 +13,8 @@ class User < ApplicationRecord
   has_one :user_point, dependent: :destroy
   has_many :product_user_histories, dependent: :destroy
 
+  has_many :owned_system_modules, class_name: "SystemModule", foreign_key: :user_id, dependent: :destroy
+
   accepts_nested_attributes_for :user_point, allow_destroy: true
   accepts_nested_attributes_for :profile, allow_destroy: true
   accepts_nested_attributes_for :system_module_users, allow_destroy: true
@@ -41,7 +43,9 @@ class User < ApplicationRecord
 
   after_create do
     if role == "customer" || role == "admin"
-      collect = SystemModule.find_or_create_by(name: "collect")
+      collect = SystemModule.find_or_create_by(name: "collect") do |mod|
+        mod.user = self
+      end
 
       system_module_users.create(system_module_id: collect.id)
     end

@@ -105,6 +105,10 @@ GEM
     connection_pool (2.5.5)
     crass (1.0.6)
     csv (3.3.5)
+    database_cleaner-active_record (2.2.2)
+      activerecord (>= 5.a)
+      database_cleaner-core (~> 2.0)
+    database_cleaner-core (2.0.1)
     date (3.5.0)
     diff-lcs (1.6.2)
     dotenv (3.1.8)
@@ -114,6 +118,13 @@ GEM
     drb (2.2.3)
     erb (6.0.0)
     erubi (1.13.1)
+    factory_bot (6.5.6)
+      activesupport (>= 6.1.0)
+    factory_bot_rails (6.5.1)
+      factory_bot (~> 6.5)
+      railties (>= 6.1.0)
+    faker (3.5.3)
+      i18n (>= 1.8.11, < 2)
     ffi (1.17.2-x86_64-linux-gnu)
     geocoder (1.8.6)
       base64 (>= 0.1.0)
@@ -303,6 +314,8 @@ GEM
       rubocop-rails (~> 2.30)
     ruby-progressbar (1.13.0)
     securerandom (0.4.1)
+    shoulda-matchers (6.5.0)
+      activesupport (>= 5.2.0)
     solargraph (0.57.0)
       backport (~> 1.2)
       benchmark (~> 0.4)
@@ -358,7 +371,10 @@ DEPENDENCIES
   bootsnap (>= 1.4.4)
   byebug
   cancancan
+  database_cleaner-active_record
   dotenv-rails
+  factory_bot_rails
+  faker
   geocoder (~> 1.6)
   listen (~> 3.3)
   puma (>= 6.0)
@@ -367,6 +383,7 @@ DEPENDENCIES
   rspec-rails
   rubocop-rails
   rubocop-rails_config
+  shoulda-matchers (~> 6.0)
   solargraph
   spring
   sqlite3 (~> 1.4)

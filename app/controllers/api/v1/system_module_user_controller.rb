@@ -23,7 +23,7 @@ module Api
         system_module_user = SystemModuleUser.new(system_module_user_params)
 
         if system_module_user.save
-          json_response(system_module_user)
+          json_response(system_module_user, :created)
         else
           json_response_error(system_module_user.errors)
         end

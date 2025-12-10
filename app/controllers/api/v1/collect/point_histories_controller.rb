@@ -6,7 +6,7 @@ module Api
       class PointHistoriesController < ApplicationController
         before_action :authenticate_and_set_user
         before_action :set_point_history, only: [:show, :update, :destroy]
-        before_action :load_and_authorize_resource
+        load_and_authorize_resource
 
         # GET /point_histories
         def index
